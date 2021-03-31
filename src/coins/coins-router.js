@@ -55,9 +55,10 @@ coinsRouter
     CoinsService.getVoteById(req.app.get("db"), req.params.ticker_symbol)
       .then((coin) => {
         if (!coin) {
-          return res.status(404).json({
-            error: { message: "Coin doesn't exist" },
-          });
+          return null;
+          // return res.status(404).json({
+          //   error: { message: "Coin doesn't exist" },
+          // });
         }
         console.log(req.params);
         res.coin = coin;
