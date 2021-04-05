@@ -2,7 +2,7 @@ const knex = require("knex");
 const supertest = require("supertest");
 const App = require("../src/App");
 
-describe("Coins postings endpoint", function () {
+describe("Coins postings endpoint", () => {
   let db;
 
   before("make knex instance", () => {
@@ -43,10 +43,10 @@ describe("Coins postings endpoint", function () {
     beforeEach("insert coins", () => {
       return db.into("coin_details").insert(testCoins);
     });
-    it("GET /api/v1/coins response with 200", () => {
+    it("GET all coins via endpoint: /api/v1/coins, response with 200", () => {
       return supertest(App).get("/api/v1/coins").expect(200);
     });
-    it("GET by :ticker_symbol", () => {
+    it("GET coin by ticker_symbol", () => {
       const ticker_symbol = "ABC";
       return supertest(App).get(`/api/v1/coins/${ticker_symbol}`).expect(200);
     });
