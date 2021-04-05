@@ -69,13 +69,6 @@ coinsRouter
 
   .get((req, res, next) => {
     res.json(sanitizeCoins(res.coin));
-  })
-  .delete((req, res, next) => {
-    CoinsService.deleteVote(req.app.get("db"), req.params.id)
-      .then(() => {
-        res.status(204).end();
-      })
-      .catch(next);
   });
 
 module.exports = coinsRouter;
